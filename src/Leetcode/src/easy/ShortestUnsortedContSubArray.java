@@ -28,9 +28,9 @@ public class ShortestUnsortedContSubArray {
         if (nums == null || nums.length <= 1)
             return 0;
 
-        int start = -1, end = 2;
-        int i = 0, j = nums.length;
-        while (i < j) {
+        int start = 0, end = nums.length;
+//        int i = 0, j = nums.length;
+        while (start < end) {
 
             if (nums[start + 1] < nums[start] && nums[end - 1] > nums[end])
                 break;
