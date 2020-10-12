@@ -12,9 +12,9 @@ public class FindAllAnagramsString {
         String p = "abc";
 
         System.out.println(findAnagrams(s, p));
-
     }
 
+    // sliding window approach
     private static List<Integer> findAnagrams(String s, String p) {
 
         List<Integer> out = new ArrayList<>();
@@ -32,7 +32,8 @@ public class FindAllAnagramsString {
             // add char by char in c map
             char ch = s.charAt(i);
             cMap.put(ch, cMap.getOrDefault(ch, 0) + 1);
-
+            // adding new char and removing previous char
+            // so the window only contains pattern chars
             if (i >= plen) {
                 char c = s.charAt(i - plen);
                 if (cMap.get(c) == 1)
@@ -41,11 +42,10 @@ public class FindAllAnagramsString {
                     cMap.put(c, cMap.get(c) - 1);
                 }
             }
-
+            // check if maps are equal
             if (pMap.equals(cMap)) {
                 out.add(i - plen + 1);
             }
-
         }
         return out;
     }

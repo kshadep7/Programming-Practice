@@ -22,7 +22,7 @@ public class MaxLenArithmeticSeq {
             return 2;
 
         List<Integer> res = new ArrayList<>();
-        Set<Integer> setB = new HashSet<Integer>();
+        Set<Integer> setB = new HashSet<>();
         for (int i : b)
             setB.add(i);
 

@@ -14,7 +14,6 @@ public class ContinuousSubArraySum {
     }
 
     static boolean check(int[] arr, int k) {
-
         for (int i = 0; i < arr.length; i++) {
             for (int j = i; j < arr.length; j++) {
 
@@ -34,8 +33,6 @@ public class ContinuousSubArraySum {
     // using hash map
     // idea is to check for reminder in the map and curr reminder and found reminder in the map should be
     // 1 or more indexes apart
-
-
     static boolean check1(int[] arr, int k) {
         int sum = 0;
         Map<Integer, Integer> map = new HashMap<>();

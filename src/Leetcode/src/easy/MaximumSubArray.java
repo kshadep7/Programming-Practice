@@ -9,6 +9,7 @@ public class MaximumSubArray {
 
     }
 
+    // kadane's algo
     static int maxSubArr(int[] arr) {
         int currSum = arr[0], maxSum = arr[0];
         for (int i = 1; i < arr.length; i++) {
