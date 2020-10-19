@@ -23,9 +23,9 @@ public class LongestCommonSubsequence {
 
         String s3 = "cbebaff";
         String s4 = "aeddbggf";
-        System.out.println(findLongestCommSub(s3, s4));
+//        System.out.println(findLongestCommSub(s3, s4));
         System.out.println(DP(s1, s2));
-        System.out.println(dpOptimized(s1, s2));
+//        System.out.println(dpOptimized(s1, s2));
     }
 
     // without map: TC: 2 ^ (n+m)
@@ -69,7 +69,25 @@ public class LongestCommonSubsequence {
                     dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
             }
         }
+        printMat(dp);
         return dp[row][col];
+    }
+
+    static void printMat(int[][] mat) {
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
+//                mat[i][j] = ++count;
+                if (mat[i][j] < 10) {
+                    System.out.print(mat[i][j] + "      ");
+                } else if (mat[i][j] < 100) {
+                    System.out.print(mat[i][j] + "     ");
+                } else {
+                    System.out.print(mat[i][j] + "   ");
+                }
+            }
+            System.out.println("\n");
+        }
+
     }
 
     // be optimzed more for space

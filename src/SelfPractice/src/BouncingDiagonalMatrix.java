@@ -20,6 +20,7 @@ public class BouncingDiagonalMatrix {
         System.out.println(Arrays.deepToString(arr));
     }
 
+    // TODO: solve it!!
     static int[] bounce(int[][] matrix) {
         int col = matrix.length;
         int[] arr = new int[col];
