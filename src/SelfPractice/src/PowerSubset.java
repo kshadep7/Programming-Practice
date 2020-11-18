@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class PowerSubset {
     static List<String> out = new ArrayList<>();
@@ -8,11 +6,13 @@ public class PowerSubset {
     public static void main(String[] args) {
 
 //        printSubsets(new char[]{'a', 'b', 'c'});
-        int[] arr = {1, 2, 2};
-        System.out.println(subsets(arr));
+        int[] arr = {1, 2, 3};
+//        System.out.println(subsets(arr));
+        Set<Integer> set = new HashSet<>(Arrays.asList(1, 2, 3));
+        System.out.println(powerSet(set));
 //        System.out.println(powerSet("abc"));
 //        System.out.println(powerSetRecur("abc"));
-        List<List<Integer>> a = new ArrayList<>();
+//        List<List<Integer>> a = new ArrayList<>();
 
 /*
         // to check if a list is present in its parent list
@@ -63,7 +63,6 @@ public class PowerSubset {
         int n = 1 << len;
         //for all final output
         for (int i = 0; i < n; i++) {
-
             // for current subset
             List<Integer> subsets = new ArrayList<>();
             for (int j = 0; j < len; j++) {
@@ -72,7 +71,7 @@ public class PowerSubset {
                 if (temp > 0)
                     subsets.add(arr[j]);
             }
-            if(!out.contains(subsets))
+            if (!out.contains(subsets))
                 out.add(subsets);
         }
 
@@ -115,9 +114,45 @@ public class PowerSubset {
             curr += str.charAt(i);
             helper(str, len, i, curr);
 
-            curr = curr.substring(0, curr.length()-1);
+            curr = curr.substring(0, curr.length() - 1);
         }
         return out;
     }
 
+    public static Set<Set<Integer>> powerSet(Set<Integer> GivenSet) {
+        Set<Set<Integer>> resultSet = new HashSet<>();
+        if (GivenSet.isEmpty()) {
+            resultSet.add(new HashSet<>());
+            return resultSet;
+        }
+        List<Integer> list = new ArrayList<>(GivenSet);
+        int head = list.get(0);
+        Set<Integer> restOfSet = new HashSet<>(list.subList(1, list.size()));
+        for (Set<Integer> currSet : powerSet(restOfSet)) {
+            Set<Integer> newSet = new HashSet<>();
+            newSet.add(head);
+            newSet.addAll(currSet);
+            resultSet.add(newSet);
+            resultSet.add(currSet);
+        }
+        return resultSet;
+    }
+
+    // TODO : look into it
+ /*   public static List<List<Integer>> powerSet1(int[] set) {
+        List<List<Integer>> res = new ArrayList<>();
+        recurse(set, 0, new ArrayList<>(), res);
+        return res;
+    }
+
+    private static void recurse(int[] set, int i, List<Integer> curr, List<List<Integer>> res) {
+        if (curr.size() == set.length) {
+            res.add(curr);
+        } else {
+            curr.add(set[i]);
+            recurse(set, i + 1, curr.add(set[i]), res);
+            recurse(set, i + 1, curr, res);
+        }
+    }
+*/
 }

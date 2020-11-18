@@ -13,6 +13,9 @@ public class AddTwoLinkedLists {
         l2.next.next = new LinkedList(4);
         l2.next.next.next = new LinkedList(3);
 
+        printLL(l1);
+        printLL(l2);
+
         printLL(add(l1, l2));
     }
 
@@ -45,8 +48,8 @@ public class AddTwoLinkedLists {
         while (ll != null) {
             System.out.print(ll.data + " -> ");
             ll = ll.next;
-
         }
+        System.out.println("\n");
     }
 
 }

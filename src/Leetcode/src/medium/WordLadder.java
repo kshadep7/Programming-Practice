@@ -30,16 +30,16 @@ public class WordLadder {
         que.offer(start);
         int level = 1;
 
-        while (!que.isEmpty()) {
+        while (!que.isEmpty()) {    // word list size m -> worst case
             int queSize = que.size();
-            for (int i = 0; i < queSize; i++) {
+            for (int i = 0; i < queSize; i++) { // n
                 String curr = que.poll();
 //                System.out.println(curr);
-                assert curr != null;
+                assert curr != null; // to remove warning of curr being null
                 char[] currArr = curr.toCharArray();
-                for (int j = 0; j < currArr.length; j++) {
+                for (int j = 0; j < currArr.length; j++) {      // n
                     char currChar = currArr[j];
-                    for (char c = 'a'; c < 'z'; c++) {
+                    for (char c = 'a'; c <= 'z'; c++) {     // 26
                         if (currArr[j] == c)
                             continue;
                         currArr[j] = c;

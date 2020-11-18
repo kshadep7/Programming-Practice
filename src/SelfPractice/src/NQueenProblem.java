@@ -1,6 +1,3 @@
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class NQueenProblem {
 
 
@@ -8,18 +5,24 @@ public class NQueenProblem {
 
     }
 
-    // TODO : Solve it later.
-    //iterative approach -> BGS
+    // the idea is to check every col by putting the queen in each cell of that particular row
+    // if the next row cannot be filled with a queen then back track
+    // another check is to check for boundaries and if the placed queen is attacked or not.
     static int noOfWays(int gridLen, int queens) {
-        int res = 0;
-        Queue<String> que = new LinkedList<>();
-        que.offer("00");
-        for (int i = 0; i < gridLen; i++) {
-            while (!que.isEmpty()) {
-//                if (que.size())
+        int row = 0, col = 0;
+        char[][] mat = new char[gridLen][gridLen];
+        // fill array with (.)
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
+                mat[i][j] = '.';
             }
         }
-        return res;
+        return helper(gridLen, mat, 0);
+    }
+
+    // TODO: Solve it !!
+    private static int helper(int gridLen, char[][] mat, int row) {
+        return 0;
     }
 
 
