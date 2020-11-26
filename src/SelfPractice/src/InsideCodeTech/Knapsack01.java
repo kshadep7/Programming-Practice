@@ -9,7 +9,7 @@ public class Knapsack01 {
         int[] values = {20, 15, 25, 10};
         int[] weights = {6, 5, 10, 3};
 
-//        System.out.println(findMaxValue(values, weights, 15));
+        System.out.println(findMaxValue(values, weights, 15));
         System.out.println(findMaxValueMemo(values, weights, 15));
     }
 
