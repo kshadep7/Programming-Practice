@@ -19,6 +19,7 @@ public class AddTwoLinkedLists {
         printLL(add(l1, l2));
     }
 
+    // TC: max(m, n)
     static LinkedList add(LinkedList l1, LinkedList l2) {
         if (l1 == null)
             return l2;

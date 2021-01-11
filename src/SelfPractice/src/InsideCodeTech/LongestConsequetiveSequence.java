@@ -22,15 +22,15 @@ Input: arr = [5, 10]
 Output: 1
 Explanation: the longest consecutive sequence is 5 (also 10)
 */
-public class LongestConsequetiveSubsequence {
+public class LongestConsequetiveSequence {
 
     public static void main(String[] args) {
         int[] arr = {14, 1, 8, 4, 0, 13, 6, 9, 2, 7};
         int[] arr1 = {4, 5, 2, 6, 5, 4, 1, -5, 0, 4};
         int[] arr2 = {5, 10};
         int[] arr3 = {1, 1, 1, 1, 1, 1, 1};
-//        System.out.println(findLongest(arr3));
-        System.out.println(findLongest1(arr1));
+        System.out.println(findLongest(arr3));
+//        System.out.println(findLongest1(arr1));
     }
 
     // TC: nlogn -> sorting
@@ -43,10 +43,12 @@ public class LongestConsequetiveSubsequence {
         for (int i = 0; i < arr.length - 1; i++) {
             if (arr[i] + 1 == arr[i + 1])
                 temp++;
-            else {
-                max = Math.max(temp, max);
+            else if (arr[i] == arr[i + 1])
+                continue;
+            else
                 temp = 1;
-            }
+
+            max = Math.max(temp, max);
         }
         return max;
     }
@@ -62,7 +64,6 @@ public class LongestConsequetiveSubsequence {
         for (int i = 0; i < arr.length; i++) {
             int num = arr[i];
             if (!set.contains(num - 1)) {
-
                 while (set.contains(num + 1)) {
                     temp++;
                     num = num + 1;

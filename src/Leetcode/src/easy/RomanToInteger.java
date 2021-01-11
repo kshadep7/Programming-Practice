@@ -9,10 +9,26 @@ public class RomanToInteger {
         String s = "MCMXCIV";
         String s1 = "III";
 
-//        System.out.println(romanToInt(s1));
-        System.out.println(Integer.MAX_VALUE);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("I", 1);
+        map.put("V", 5);
+        map.put("X", 10);
+        map.put("L", 50);
+        map.put("C", 100);
+        map.put("D", 500);
+        map.put("M", 1000);
+        map.put("IV", 4);
+        map.put("IX", 9);
+        map.put("XL", 40);
+        map.put("XC", 90);
+        map.put("CD", 400);
+        map.put("CM", 900);
+
+        System.out.println(romanToInt(s));
+        System.out.println(romanToInteger2(s, map));
     }
 
+    // N
     public static int romanToInt(String s) {
         // making a map with values of all possible combinations
         Map<String, Integer> map = new HashMap<>();
@@ -74,6 +90,23 @@ public class RomanToInteger {
             res += twoCharValue;
             helper(s, index + 2, res, map);
         }
+        return res;
+    }
+
+    // Subtraction apporach
+    // N
+    static int romanToInteger2(String s, Map<String, Integer> map) {
+        int res = 0;
+        for (int i = 0; i < s.length(); i++) {
+            res += map.getOrDefault("" + s.charAt(i), 0);
+        }
+        if (s.contains("IV") || s.contains("IX"))
+            res -= 2;
+        if (s.contains("XL") || s.contains("XC"))
+            res -= 20;
+        if (s.contains("CD") || s.contains("CM"))
+            res -= 200;
+
         return res;
     }
 }

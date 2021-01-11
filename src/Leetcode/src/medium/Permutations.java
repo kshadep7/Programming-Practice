@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Permutations {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3};
+        int[] arr = {1, 2, 3}; // no duplicates
         System.out.println(permute(arr));
     }
 
@@ -32,6 +32,4 @@ public class Permutations {
             visited[i] = false;
         }
     }
-
-
 }

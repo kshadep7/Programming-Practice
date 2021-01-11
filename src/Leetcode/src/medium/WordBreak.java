@@ -39,7 +39,6 @@ public class WordBreak {
             dp[start] = false;
         }
         return dp[start];
-
     }
 
     // won't work for s = "aaaaaaa"

@@ -8,7 +8,7 @@ public class PermutationsII {
 
     public static void main(String[] args) {
 
-        int[] arr = {1, 1, 2};
+        int[] arr = {1, 1, 2}; // duplicates present
         System.out.println(permuteUnique(arr));
     }
 

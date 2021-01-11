@@ -9,7 +9,8 @@ public class PowerSubset {
         int[] arr = {1, 2, 3};
 //        System.out.println(subsets(arr));
         Set<Integer> set = new HashSet<>(Arrays.asList(1, 2, 3));
-        System.out.println(powerSet(set));
+//        System.out.println(powerSet(set));
+        System.out.println(countSubsets(arr, new ArrayList<>(), 0, new ArrayList<>()));
 //        System.out.println(powerSet("abc"));
 //        System.out.println(powerSetRecur("abc"));
 //        List<List<Integer>> a = new ArrayList<>();
@@ -79,7 +80,6 @@ public class PowerSubset {
     }
 
     // for String
-
     public static List<String> powerSet(String str) {
         List<String> out = new ArrayList<>();
         char[] arr = str.toCharArray();
@@ -138,21 +138,19 @@ public class PowerSubset {
         return resultSet;
     }
 
-    // TODO : look into it
- /*   public static List<List<Integer>> powerSet1(int[] set) {
-        List<List<Integer>> res = new ArrayList<>();
-        recurse(set, 0, new ArrayList<>(), res);
+    // Using Backtracking
+    //TC: N x 2^N
+    static List<List<Integer>> countSubsets(int[] arr, List<Integer> curr, int index, List<List<Integer>> res) {
+        if (index >= arr.length) {
+            return res;
+        } else {
+            curr.add(arr[index]);
+            countSubsets(arr, curr, index + 1, res);
+            res.add(new ArrayList<>(curr));
+            curr.remove(curr.size() - 1);
+            countSubsets(arr, curr, index + 1, res);
+        }
         return res;
     }
 
-    private static void recurse(int[] set, int i, List<Integer> curr, List<List<Integer>> res) {
-        if (curr.size() == set.length) {
-            res.add(curr);
-        } else {
-            curr.add(set[i]);
-            recurse(set, i + 1, curr.add(set[i]), res);
-            recurse(set, i + 1, curr, res);
-        }
-    }
-*/
 }

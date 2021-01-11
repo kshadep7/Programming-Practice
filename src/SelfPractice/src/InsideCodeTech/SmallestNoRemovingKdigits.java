@@ -9,13 +9,13 @@ public class SmallestNoRemovingKdigits {
         String num = "825563";
         String num1 = "123456";
         String num2 = "000235";
-        System.out.println(smallestNo(num, 2));
+        System.out.println(smallestNo(num2, 1));
     }
 
     // TC: N
     // SC: N -> stack
     static String smallestNo(String num, int k) {
-        if (num.length() >= k)
+        if (num.length() <= k)
             return "0";
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < num.length(); i++) {        // N

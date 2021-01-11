@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class PileOfBoxes {
 
     public static void main(String[] args) {
-        int[] piles = {1,2,3,4};
+        int[] piles = {4,5,5,2,4};
         System.out.println(minSteps(piles));
     }
 

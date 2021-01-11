@@ -19,6 +19,7 @@ public class MutateMatrix {
         printMat(mutate(mat, q), mat.length);
     }
 
+    // another approach
     static int[][] mutate(int[][] a, int[] q) {
 
         for (int i : q) {

@@ -23,8 +23,8 @@ public class LongestCommonSubsequence {
 
         String s3 = "cbebaff";
         String s4 = "aeddbggf";
-//        System.out.println(findLongestCommSub(s3, s4));
-        System.out.println(DP(s1, s2));
+        System.out.println(findLongestCommSub(s1, s2));
+//        System.out.println(DP(s1, s2));
 //        System.out.println(dpOptimized(s1, s2));
     }
 
@@ -37,16 +37,17 @@ public class LongestCommonSubsequence {
     }
 
     private static int helper(String s1, String s2, int i, int j, Map<String, Integer> memo) {
-        String key = "" + i + j;
+        String key = i + "," + j;
         if (i >= s1.length() || j >= s2.length())
             return 0;
         else if (memo.containsKey(key))
             return memo.get(key);
-        else if (s1.charAt(i) == s2.charAt(j))
+        else if (s1.charAt(i) == s2.charAt(j)) {
             // if chars match wee know subsequence has 1 char in common
             // so increament both pointers i and j of s1 and s2 respectively.
+//            System.out.print(s1.charAt(i));
             return 1 + helper(s1, s2, i + 1, j + 1, memo);
-        else {
+        } else {
             // first increament s1 index(i) and then check by increamenting s2 index(j)
             // and take max between both results.
             int res = Math.max(helper(s1, s2, i + 1, j, memo), helper(s1, s2, i, j + 1, memo));
