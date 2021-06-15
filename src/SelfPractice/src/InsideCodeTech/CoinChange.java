@@ -3,10 +3,11 @@ package InsideCodeTech;
 public class CoinChange {
 
     public static void main(String[] args) {
-        int[] coins = {2, 3, 7};
-        System.out.println(coinChange(coins, 15));
-        System.out.println(coinChangeRec(coins, 15));
-        System.out.println(coinChangeDP(coins, 15));
+        int[] coins = {2, 3, 7}; // 15
+        int[] coins1 = {1, 2, 5}; // 11
+//        System.out.println(coinChangeRec1(coins, 15));
+//        System.out.println(coinChangeRec(coins, 15));
+        System.out.println(coinChangeDP(coins1, 11));
 
     }
 
@@ -21,7 +22,7 @@ public class CoinChange {
     private static int helperRec(int[] coins, int amt) {
         if (amt == 0)
             return 0;
-        // -1 for overeflow on line 27 i.e 1 + max value
+        // -1 for overflow on line 27 i.e 1 + max value
         int minCoins = Integer.MAX_VALUE - 1;
         for (int coin : coins) {
             if (amt - coin >= 0)
@@ -30,7 +31,7 @@ public class CoinChange {
         return minCoins;
     }
 
-    public static int coinChange(int[] coins, int amount) {
+    public static int coinChangeRec1(int[] coins, int amount) {
         int min = helper(coins, amount);
         return min == Integer.MAX_VALUE ? -1 : min;
     }
@@ -62,6 +63,6 @@ public class CoinChange {
             }
             dp[i] = minCoins;
         }
-        return dp[amt] == Integer.MAX_VALUE ? -1 : dp[amt];
+        return dp[amt] == Integer.MAX_VALUE - 1 ? -1 : dp[amt];
     }
 }

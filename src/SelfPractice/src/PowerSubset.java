@@ -8,7 +8,7 @@ public class PowerSubset {
 //        printSubsets(new char[]{'a', 'b', 'c'});
         int[] arr = {1, 2, 3};
 //        System.out.println(subsets(arr));
-        Set<Integer> set = new HashSet<>(Arrays.asList(1, 2, 3));
+//        Set<Integer> set = new HashSet<>(Arrays.asList(1, 2, 3));
 //        System.out.println(powerSet(set));
         System.out.println(countSubsets(arr, new ArrayList<>(), 0, new ArrayList<>()));
 //        System.out.println(powerSet("abc"));
@@ -57,22 +57,23 @@ public class PowerSubset {
         }
     }
 
+    // TC: N * 2^N
     public static List<List<Integer>> subsets(int[] arr) {
         List<List<Integer>> out = new ArrayList<>();
 
         int len = arr.length;
-        int n = 1 << len;
+        int n = 1 << len;   // i.e 2^len
         //for all final output
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {   // 2^len
             // for current subset
             List<Integer> subsets = new ArrayList<>();
-            for (int j = 0; j < len; j++) {
+            for (int j = 0; j < len; j++) { // len
 
                 int temp = i & (1 << j);
                 if (temp > 0)
                     subsets.add(arr[j]);
             }
-            if (!out.contains(subsets))
+            if (!out.contains(subsets))     // len
                 out.add(subsets);
         }
 

@@ -5,20 +5,20 @@ import java.util.List;
 
 public class Subsets {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3};
+        int[] arr = {1, 2, 3}; // no duplicates present
 //        System.out.println(subsets(arr));
-//        System.out.println(sub(arr));
-        System.out.println();
+        System.out.println(subsets1(arr));
     }
 
+    // Not readable enough
     public static List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> output = new ArrayList();
-        output.add(new ArrayList<Integer>());
+        List<List<Integer>> output = new ArrayList<>();
+        output.add(new ArrayList<>());
 
         for (int num : nums) {
-            List<List<Integer>> newSubsets = new ArrayList();
+            List<List<Integer>> newSubsets = new ArrayList<>();
             for (List<Integer> curr : output) {
-                newSubsets.add(new ArrayList<Integer>(curr) {{
+                newSubsets.add(new ArrayList<>(curr) {{
                     add(num);
                 }});
             }
@@ -29,18 +29,24 @@ public class Subsets {
         return output;
     }
 
-    static List<List<Integer>> sub(int[] arr) {
-        List<List<Integer>> out = new ArrayList<>();
+    static List<List<Integer>> subsets1(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> curr = new ArrayList<>();
 
-        int j = 0;
-        for (int i = 1; i <= arr.length; i++) {
+        res.add(new ArrayList<>());
+        helper(curr, res, 0, nums);
+        return res;
+    }
 
-            List<Integer> subs = new ArrayList<>();
-            for (int k = 0; k < i; k++) {
-                subs.add(arr[k]);
-            }
-            out.add(subs);
+    private static void helper(List<Integer> curr, List<List<Integer>> res, int index, int[] nums) {
+        if (index >= nums.length)
+            return;
+        else {
+            curr.add(nums[index]);
+            helper(curr, res, index + 1, nums);
+            res.add(new ArrayList<>(curr));
+            curr.remove(curr.size() - 1);
+            helper(curr, res, index + 1, nums);
         }
-        return out;
     }
 }

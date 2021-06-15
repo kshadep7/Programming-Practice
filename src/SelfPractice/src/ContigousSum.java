@@ -58,7 +58,7 @@ public class ContigousSum {
             maxSum += arr[i];
             if (maxSum < 0) {
                 maxSum = 0;
-                start = i+1;
+                start = i + 1;
             } else {
                 end = i;
             }
