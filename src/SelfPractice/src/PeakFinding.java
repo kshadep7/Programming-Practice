@@ -4,6 +4,7 @@ public class PeakFinding {
 
         int[] arr = {4, 5, 8, 3};
         int[] arr1 = {1, 3, 4, 7, 8};
+        System.out.println(find(arr));
         System.out.println(find(arr1));
     }
 

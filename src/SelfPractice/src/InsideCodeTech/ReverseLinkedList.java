@@ -11,6 +11,8 @@ class LinkedList {
         this.next = null;
     }
 
+    public LinkedList() {
+    }
 }
 
 public class ReverseLinkedList {

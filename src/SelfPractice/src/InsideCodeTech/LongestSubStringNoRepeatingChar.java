@@ -9,7 +9,7 @@ public class LongestSubStringNoRepeatingChar {
     public static void main(String[] args) {
 
         String str = "abcdbeghef";
-//        System.out.println(longestSub(str));
+        System.out.println(longestSub(str));
         System.out.println(longestSub1(str));
     }
 
@@ -41,7 +41,7 @@ public class LongestSubStringNoRepeatingChar {
     static int longestSub1(String s) {
         int[] indexes = new int[128]; // -> constant space of 128
         Arrays.fill(indexes, -1);
-        int start = 0;
+        int start = 0; // to store the starting index of the char
         int max = 0;
         for (int i = 0; i < s.length(); i++) {
             // check if we any charatcter is repeated

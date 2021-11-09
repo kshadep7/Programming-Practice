@@ -18,9 +18,11 @@ public class AccountsMerge {
         List<List<String>> acc = new ArrayList<>();
         Collections.addAll(acc, l, l2, l3, l1);
 
-        System.out.println(acc);
-        System.out.println("Merged accounts: ");
-        System.out.println(merge(acc));
+//        System.out.println(acc);
+//        System.out.println("Merged accounts: ");
+//        System.out.println(merge(acc));
+
+        sol(10);
     }
 
     /*
@@ -73,5 +75,13 @@ public class AccountsMerge {
 
     static String find(String child, Map<String, String> parent) {
         return parent.get(child).equals(child) ? child : find(parent.get(child), parent);
+    }
+
+
+    public static void sol(Integer num) {
+        if(num > 0) {
+            System.out.print(num);
+            sol(num -1);
+        }
     }
 }

@@ -25,6 +25,7 @@ public class ValidBrackets {
             else if (stack.isEmpty() || stack.pop() != c)
                 return false;
         }
-        return true;
+        // for edge case if stack still has some chars then string is invalid
+        return stack.isEmpty();
     }
 }
