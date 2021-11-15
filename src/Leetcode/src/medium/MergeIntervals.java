@@ -1,9 +1,6 @@
 package medium;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class MergeIntervals {
 	//[[1,3],[2,6],[8,10],[15,18]]
@@ -24,10 +21,12 @@ public class MergeIntervals {
 		int[][] arr3 = {{2, 3}, {4, 5}, {6, 7}, {8, 9}, {1, 10}};
 		int[][] arr4 = {{1, 4}, {4, 5}};
 
+
+
 //        int[][] out = merge2(arr);
 //		int[][] out = mergeWithoutStack(arr3);
 //		System.out.println(Arrays.deepToString(out));
-		System.out.println(Arrays.deepToString(merge(arr4)));
+//		System.out.println(Arrays.deepToString(merge(arr4)));
 	}
 
 	// with stack and sorting
@@ -113,4 +112,6 @@ public class MergeIntervals {
 	private static boolean overlap(int[] i1, int[] i2) {
 		return (i1[0] <= i2[1] && i2[0] <= i1[1]);
 	}
+
+
 }
