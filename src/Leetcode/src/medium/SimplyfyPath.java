@@ -4,87 +4,133 @@ import java.util.*;
 
 public class SimplyfyPath {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 //        System.out.println(simplifyPath("/a/./b/../../c/"));
 //        System.out.println(simple("/../"));
-        System.out.println(simplifyPath1("/home//foo/../bar//abc//.."));
-    }
+//		System.out.println(simplifyPath1("/home//foo/../bar//abc//.."));
+//		System.out.println(simple("/home//foo/../bar//abc//.."));
 
-    // for a single char --> not a general solution
-    public static String simplifyPath(String path) {
-        // String[] arr = path.split("/");
-        // System.out.println(Arrays.toString(arr));
-        Stack<Character> stack = new Stack<>();
-        StringBuilder sb = new StringBuilder();
-        int i = 0;
-        int len = path.length();
-        while (i < len) {
+		String[] arr = {
+				"cd users",
+				"cd codesignal",
+				"cd ..",
+				"cd admin"
+		};
 
-            if (path.charAt(i) == '/') {
-                i++;
-                continue;
-            } else if (path.charAt(i) == '.') {
-                if (path.charAt(i + 1) == '.')
-                    if (!stack.isEmpty()) stack.pop();
-                i++;
-                continue;
-            }
+		String[] arr1 = {
+				"cd users",
+				"cd .",
+				"cd admin",
+				"cd /",
+				"cd volume"
+		};
 
-            stack.push(path.charAt(i));
-            i++;
-        }
+		System.out.println(simpleCodesignal(arr));
+		System.out.println(simpleCodesignal(arr1));
+	}
 
-        while (!stack.isEmpty()) {
-            char c = stack.pop();
-            sb.append(Character.toString(c));
-            sb.append("/");
-        }
+	// for a single char --> not a general solution
+	public static String simplifyPath(String path) {
+		// String[] arr = path.split("/");
+		// System.out.println(Arrays.toString(arr));
+		Stack<Character> stack = new Stack<>();
+		StringBuilder sb = new StringBuilder();
+		int i = 0;
+		int len = path.length();
+		while (i < len) {
 
-        return sb.reverse().toString();
-    }
+			if (path.charAt(i) == '/') {
+				i++;
+				continue;
+			} else if (path.charAt(i) == '.') {
+				if (path.charAt(i + 1) == '.')
+					if (!stack.isEmpty()) stack.pop();
+				i++;
+				continue;
+			}
 
-    static String simple(String path) {
-        Deque<String> stack = new LinkedList<>();
-        StringBuilder sb = new StringBuilder();
-        // String[] arr = {"", " ", ".", ".."};
-        ArrayList<String> list = new ArrayList<>(Arrays.asList("", " ", ".", ".."));
-        System.out.println(Arrays.toString(path.split("/")));
-        for (String str : path.split("/")) {
-            if (list.contains(str) && str.equals("..")) {
-                if (!stack.isEmpty()) stack.pop();
-            } else if (!list.contains(str)) {
-                stack.push(str);
-            }
-        }
-        System.out.println(stack.toString());
-        while (!stack.isEmpty()) {
-            String s = stack.pollLast();
-            sb.append("/");
-            sb.append(s);
-        }
-        return sb.length() == 0 ? "/" : sb.toString();
-    }
+			stack.push(path.charAt(i));
+			i++;
+		}
 
-    // just for practice
-    static String simplifyPath1(String path) {
+		while (!stack.isEmpty()) {
+			char c = stack.pop();
+			sb.append(Character.toString(c));
+			sb.append("/");
+		}
 
-        Deque<String> stack = new LinkedList<>();
-        List<String> skip = new ArrayList<>(Arrays.asList("", " ", ".", ".."));
+		return sb.reverse().toString();
+	}
 
-        for (String str : path.split("/")) {
-            if (!skip.contains(str)) {
-                stack.push(str);
-            } else if (skip.contains(str) && str.equals("..")) {
-                if (!stack.isEmpty())
-                    stack.pop();
-            }
-        }
-        StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) {
-            String s = stack.pollLast();
-            sb.append("/");
-            sb.append(s);
-        }
-        return sb.length() == 0 ? "/" : sb.toString();
-    }
+	static String simple(String path) {
+		Deque<String> stack = new LinkedList<>();
+		StringBuilder sb = new StringBuilder();
+		// String[] arr = {"", " ", ".", ".."};
+		ArrayList<String> list = new ArrayList<>(Arrays.asList("", " ", ".", ".."));
+		System.out.println(Arrays.toString(path.split("/")));
+		for (String str : path.split("/")) {
+			if (list.contains(str) && str.equals("..")) {
+				if (!stack.isEmpty()) stack.pop();
+			} else if (!list.contains(str)) {
+				stack.push(str);
+			}
+		}
+		System.out.println(stack.toString());
+		while (!stack.isEmpty()) {
+			String s = stack.pollLast();
+			sb.append("/");
+			sb.append(s);
+		}
+		return sb.length() == 0 ? "/" : sb.toString();
+	}
+
+	// just for practice
+	static String simplifyPath1(String path) {
+
+		Deque<String> stack = new LinkedList<>();
+		List<String> skip = new ArrayList<>(Arrays.asList("", " ", ".", ".."));
+
+		for (String str : path.split("/")) {
+			if (!skip.contains(str)) {
+				stack.push(str);
+			} else if (skip.contains(str) && str.equals("..")) {
+				if (!stack.isEmpty())
+					stack.pop();
+			}
+		}
+		StringBuilder sb = new StringBuilder();
+		while (!stack.isEmpty()) {
+			String s = stack.pollLast();
+			sb.append("/");
+			sb.append(s);
+		}
+		return sb.length() == 0 ? "/" : sb.toString();
+	}
+
+	static String simpleCodesignal(String[] path) {
+		Deque<String> stack = new LinkedList<>();
+		StringBuilder sb = new StringBuilder();
+		// String[] arr = {"", " ", ".", ".."};
+		ArrayList<String> list = new ArrayList<>(Arrays.asList("", " ", ".", "..", "/"));
+//        System.out.println(Arrays.toString(path.split("/")));
+
+		for (String s : path) {
+			String[] arr = s.split(" ");
+			if (list.contains(arr[1]) && arr[1].equals("..")) {
+				if (!stack.isEmpty()) stack.pop();
+			} else if (list.contains(arr[1]) && arr[1].equals("/")) {
+				stack.clear();
+			} else if (!list.contains(arr[1])) {
+				stack.push(arr[1]);
+			}
+		}
+//		System.out.println(stack.toString());
+		while (!stack.isEmpty()) {
+			String s = stack.pollLast();
+			sb.append("/");
+			sb.append(s);
+		}
+		return sb.length() == 0 ? "/" : sb.toString();
+	}
+
 }

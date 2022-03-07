@@ -1,5 +1,5 @@
 package medium;
-
+/*
 import javafx.util.Pair;
 
 import java.util.LinkedList;
@@ -67,3 +67,4 @@ public class SumofNodesEvenGrandParent {
         System.out.println(sum);
     }
 }
+*/

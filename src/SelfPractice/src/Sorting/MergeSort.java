@@ -6,12 +6,15 @@ public class MergeSort {
 
     public static void main(String[] args) {
 
-        int[] arr = {2, 4, 1, 6, 8, 5, 3, 7};
-        int[][] arr1 = {{3, 4}, {1, 6}, {7, 1}, {1, 8}, {1, 3}};
-//        sort(arr);
-        System.out.println(Arrays.deepToString(arr1));
-        Arrays.parallelSort(arr1, (a, b) -> a[0] - b[0]);
-        System.out.println(Arrays.deepToString(arr1));
+        int[] arr = {2, 4, 1, 6, 8, 5, 3, 7, 9};
+//        int[][] arr1 = {{3, 4}, {1, 6}, {7, 1}, {1, 8}, {1, 3}};
+
+        System.out.println(Arrays.toString(arr));
+        sort(arr);
+        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.deepToString(arr1));
+//        Arrays.parallelSort(arr1, (a, b) -> a[0] - b[0]);
+//        System.out.println(Arrays.deepToString(arr1));
     }
 
     // TC: nlogn -> worst case

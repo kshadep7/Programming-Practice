@@ -44,6 +44,8 @@ public class MutateMatrix {
         return a;
     }
 
+    // wait
+    // we have rotate by k
     static void rotate(int[][] a) {
         int n = a.length;
         for (int layer = 0; layer < n / 2; layer++) {

@@ -1,6 +1,9 @@
 package medium;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 
 public class MergeIntervals {
 	//[[1,3],[2,6],[8,10],[15,18]]
@@ -22,14 +25,15 @@ public class MergeIntervals {
 		int[][] arr4 = {{1, 4}, {4, 5}};
 
 
-
 //        int[][] out = merge2(arr);
 //		int[][] out = mergeWithoutStack(arr3);
 //		System.out.println(Arrays.deepToString(out));
-//		System.out.println(Arrays.deepToString(merge(arr4)));
+		System.out.println(Arrays.deepToString(merge(arr1)));
 	}
 
 	// with stack and sorting
+	// TC: O(n*Log(n)) - due to sorting
+	// SC: O(n) - Stack
 	static int[][] merge(int[][] arr) {
 		Stack<int[]> stack = new Stack<>();
 
@@ -57,8 +61,6 @@ public class MergeIntervals {
 
 		return out;
 	}
-	// TC: O(n*Log(n)) - due to sorting
-	// SC: O(n) - Stack
 
 	//without stack with sorting
 	static int[][] mergeWithoutStack(int[][] arr) {
@@ -109,9 +111,34 @@ public class MergeIntervals {
 		return list.toArray(new int[list.size()][]);
 	}
 
-	private static boolean overlap(int[] i1, int[] i2) {
-		return (i1[0] <= i2[1] && i2[0] <= i1[1]);
+	public static int maxOverlaps(int[][] arr) {
+
+		if (arr.length <= 1) return 1;
+		int count = 0;
+
+		//add first interval
+		List<int[]> list = new ArrayList<>();
+		list.add(arr[0]);
+
+		for (int i = 1; i < arr.length; i++) {
+			int[] newI = arr[i];
+			for (int j = 0; j < arr.length - 1; j++) {
+				int[] oldI = arr[j];
+				if (overlap(oldI, newI)) {
+					count++;
+				}
+			}
+
+		}
+
+		return count;
 	}
 
+	private static boolean overlap(int[] i1, int[] i2) {
+		return (i1[0] <= i2[1] && i1[1] >= i2[0]);
+	}
+	// (x1, y1) (x2, y2)
+	// x1 <= y2 && y1 >= x2
+	// [1, 5] [3, 6]
 
 }

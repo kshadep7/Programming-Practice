@@ -1,8 +1,8 @@
 package medium;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class SnapshotArray {
 
@@ -15,7 +15,9 @@ public class SnapshotArray {
 		snapshotArray.set(0, 5);
 		snapshotArray.snap();
 		snapshotArray.set(0, 6);
-		System.out.println(snapshotArray.get(0, 0));
+//		System.out.println(snapshotArray.get(0, 0));
+//		sol();
+
 	}
 
 	public SnapshotArray(int length) {
@@ -82,4 +84,5 @@ get(int index, int snap_id): O(log(Set))
     }
 }
 	 */
+
 }

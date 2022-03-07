@@ -12,7 +12,6 @@ public class SubArraySumEqualsK {
     }
 
     // two pointer doesn't work
-
     static int subArraySum(int[] arr, int k) {
         int count = 0;
         a:
@@ -42,7 +41,6 @@ public class SubArraySumEqualsK {
 
     // using cumulative sum in hash map and then -->
     // is (sum-k) is in map if yes then sub array of sum k is there
-
     // TC : O(n) SC: O(n)
     static int sumEqual(int[] arr, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
