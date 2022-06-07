@@ -65,7 +65,7 @@ public class ThreeSum {
             else {
                 res.add(Arrays.asList(arr[i], arr[lo++], arr[hi--]));
                 // check for duplicates
-                // increament lo if next lo is same is as previous
+                // increment lo if next lo is same is as previous
                 while (lo < hi && arr[lo] == arr[lo - 1])
                     lo++;
             }

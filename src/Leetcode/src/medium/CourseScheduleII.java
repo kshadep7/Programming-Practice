@@ -13,11 +13,11 @@ public class CourseScheduleII {
 
 		int[][] pre1 = {{1, 0}, {0, 1}};
 
-//		System.out.println(Arrays.toString(findOrder(numCourses, prerequisites)));
-		System.out.println(Arrays.toString(findOrder(num, pre1)));
+		System.out.println(Arrays.toString(findOrder(numCourses, prerequisites)));
+//		System.out.println(Arrays.toString(findOrder(num, pre1)));
 	}
 
-	// simple topological sort approaach
+	// simple topological sort approach
 	public static int[] findOrder(int numCourses, int[][] prerequisites) {
 
 		List<Integer> res = new ArrayList<>();
@@ -58,8 +58,7 @@ public class CourseScheduleII {
 		List<Integer> preReqs = graph.get(key);
 		if (preReqs != null) {
 			for (int req : preReqs) {
-				if (!seen.contains(req))
-					dfsHelper(graph, res, req, seen);
+				if (!seen.contains(req)) dfsHelper(graph, res, req, seen);
 			}
 		}
 		res.add(key);
